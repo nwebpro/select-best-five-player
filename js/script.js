@@ -5,15 +5,19 @@ function displayPlayer(selectPlayer){
     tableBody.innerHTML = '';
 
     for (let i = 0; i < selectPlayer.length; i++) {
-        const name = playerArray[i];
+        if(i < 5){
+            const name = playerArray[i];
+            // Create tr element
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <th class="pr-5">${i + 1}</th>
+                <td>${name}</td>
+            `
+            tableBody.appendChild(tr);
+        }else{
+            alert('Sorry, you have already added 5 players!');
+        }
         
-        // Create tr element
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <th class="pr-5">${i + 1}</th>
-            <td>${name}</td>
-        `
-        tableBody.appendChild(tr);
     }
 
 }
