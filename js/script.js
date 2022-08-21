@@ -1,10 +1,9 @@
 const playerArray = [];
 
+// Get Player List Click by Select Button
 function displayPlayer(selectPlayer){
     const tableBody = document.getElementById('select-players');
     tableBody.innerHTML = '';
-
-    let count = 0;
 
     for (let i = 0; i < selectPlayer.length; i++) {
         const name = playerArray[i];
@@ -19,7 +18,7 @@ function displayPlayer(selectPlayer){
 
 }
 
-
+// Select Player
 function selectPlayer(element){
     const playerName = element.parentNode.children[0].innerText;
     playerArray.push(playerName);
@@ -29,7 +28,6 @@ function selectPlayer(element){
         alert('Sorry, you have already added 5 players 😶');
         return;
     }
-    return playerArray;
 }
 
 // button disable after click
@@ -40,11 +38,14 @@ for (const button of buttons) {
     });
 }
 
+// Per Player Cost Calculate
 document.getElementById('calculate').addEventListener('click', function(){
     const perPlayerCost = getInputFieldValueById('total-player');
 
     const playerLength = playerArray.length;
     const calculate = playerLength * perPlayerCost;
+
+    // Error Handle
     if (isNaN(perPlayerCost)) {
         alert("Please enter a valid amount 😶");
         return;
@@ -53,4 +54,26 @@ document.getElementById('calculate').addEventListener('click', function(){
         return;
     }
     setTextElementValueById('player-expenses', calculate);
+})
+
+
+// Total Calculate Cost
+document.getElementById('calculate-total').addEventListener('click', function(){
+    const managerCost = getInputFieldValueById('manager-cost');
+    const coachCost = getInputFieldValueById('coach-cost');
+    const playerExpenses = getTextElementValueById('player-expenses');
+    
+    const calculateTotal = managerCost + coachCost + playerExpenses;
+
+    // Error Handle
+    if (isNaN(managerCost) || isNaN(coachCost)) {
+        alert("Please enter a valid amount 😶");
+        return;
+    }else if(calculateTotal <= 0){
+        alert('Please enter a valid amount 😶');
+        return;
+    }
+    
+    setTextElementValueById('total-expenses', calculateTotal);
+
 })
