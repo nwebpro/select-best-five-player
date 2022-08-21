@@ -22,6 +22,13 @@ function displayPlayer(selectPlayer){
 function selectPlayer(element){
     const playerName = element.parentNode.children[0].innerText;
     playerArray.push(playerName);
-    
     displayPlayer(playerArray);
+}
+
+// button disable after click
+const buttons = document.getElementsByClassName('disabled');
+for (const button of buttons) {
+    button.addEventListener('click', function(event){
+        event.target.classList.add('disabled-btn');
+    });
 }

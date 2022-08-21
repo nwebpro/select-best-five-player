@@ -13,3 +13,7 @@ h1{
 .total-style{
     color: #FF5E19;
 }
+.disabled-btn{
+    pointer-events: none;
+    opacity: .65;
+}
