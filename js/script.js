@@ -21,8 +21,8 @@ function displayPlayer(selectPlayer){
 // Select Player
 function selectPlayer(element){
     const playerName = element.parentNode.children[0].innerText;
-    playerArray.push(playerName);
-    if(playerArray.length <= 5){
+    if(playerArray.length < 5){
+        playerArray.push(playerName);
         displayPlayer(playerArray);
     }else{
         alert('Sorry, you have already added 5 players 😶');
