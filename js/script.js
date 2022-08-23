@@ -22,6 +22,10 @@ function displayPlayer(selectPlayer){
 function selectPlayer(element){
     const playerName = element.parentNode.children[0].innerText;
     if(playerArray.length < 5){
+        // button disable after click
+        element.disabled = true ;
+        element.style.opacity = '0.5';
+        // Player Array List Push
         playerArray.push(playerName);
         displayPlayer(playerArray);
     }else{
@@ -31,12 +35,12 @@ function selectPlayer(element){
 }
 
 // button disable after click
-const buttons = document.getElementsByClassName('disabled');
-for (const button of buttons) {
-    button.addEventListener('click', function(event){
-        event.target.classList.add('disabled-btn');
-    });
-}
+// const buttons = document.getElementsByClassName('disabled');
+// for (const button of buttons) {
+//     button.addEventListener('click', function(event){
+//         event.target.classList.add('disabled-btn');
+//     });
+// }
 
 // Per Player Cost Calculate
 document.getElementById('calculate').addEventListener('click', function(){
